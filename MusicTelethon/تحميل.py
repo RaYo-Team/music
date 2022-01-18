@@ -39,8 +39,8 @@ async def song(client, message: Message):
         return
     c_time = time.time()
     capy = f"""
-**🏷️ اسم الاغنيه :** [{thum}]({mo})
-**🎧 طلب من :** {message.from_user.mention}
+**اسم الاغنية 🎞 :** [{thum}]({mo})
+**🎤تم طلب الاغنيه من قبل :** {message.from_user.mention}
 """
     file_stark = f"{ytdl_data['id']}.mp3"
     await client.send_audio(        message.chat.id,        audio=open(file_stark, "rb"),        duration=int(ytdl_data["duration"]),        title=str(ytdl_data["title"]),        performer=str(ytdl_data["uploader"]),        thumb=sedlyf,        caption=capy,        progress=progress,        progress_args=(            pablo,            c_time,            f"**📥 تحميل** `{urlissed}`",            file_stark,        ),    )
@@ -85,7 +85,7 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)        )
         if file_name:
             try:
-                await message.edit(                    "{}\n**اسم الفايل:** `{}`\n{}".format(type_of_ps, file_name, tmp)                )
+                await message.edit(                    "{}\n**اسم الفايل 📁:** `{}`\n{}".format(type_of_ps, file_name, tmp)                )
             except FloodWait as e:
                 await asyncio.sleep(e.x)
             except MessageNotModified:
@@ -185,8 +185,8 @@ async def vsong(client, message: Message):
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
     capy = f"""
-**🏷️ اسم الفيديو :** [{thum}]({mo})
-**🎧 طلب من :** {message.from_user.mention}
+**اسم الفيديو 🎞 :** [{thum}]({mo})
+**🎤تم طلب الاغنيه من قبل :** {message.from_user.mention}
 """
     await client.send_video(        message.chat.id,        video=open(file_stark, "rb"),        duration=int(ytdl_data["duration"]),        file_name=str(ytdl_data["title"]),        thumb=sedlyf,        caption=capy,        supports_streaming=True,        progress=progress,        progress_args=(            pablo,            c_time,            f"**📥 تحميل** `{urlissed}`",            file_stark,        ),    )
     await pablo.delete()
